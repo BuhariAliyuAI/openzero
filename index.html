@@ -60,12 +60,12 @@ input {
     </section>
     <section id="create-id">
   <h2>Create your ID (prototype)</h2>
-  <form id="id-form">
-    <label for="full-name">Full name</label>
+  <label for="full-name">Full name</label>
     <input type="text" id="full-name" placeholder="Your name">
     <button type="submit" class="button">Create ID</button>
   </form>
     </section>
+    <p id="result"></p>
     <section>
       <h2>OpenZero Wallet</h2>
       <p>Store your credentials and assets. Only you hold the key.</p>
@@ -86,6 +86,16 @@ input {
         <li>OpenZero AI</li>
       </ol>
     </section>
-    <footer>© 2026 OpenZero. Your data, in your hands.</footer>
+   <footer>© 2026 OpenZero. Your data, in your hands.</footer>
+   <script>
+  const form = document.getElementById("id-form");
+  const result = document.getElementById("result");
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    const name = document.getElementById("full-name").value;
+    result.textContent = "Welcome, " + name;
+   });
+  </script>
   </body>
 </html>
