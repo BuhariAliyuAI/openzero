@@ -95,7 +95,8 @@ input {
   form.addEventListener("submit", function (event) {
     event.preventDefault();
     const name = document.getElementById("full-name").value;
-    result.textContent = "Welcome, " + name;
+    const id = "OZ-" + Math.floor(Math.random() * 1000000);
+result.textContent = "Welcome, " + name + ". Your ID: " + id;
    });
   </script>
   </body>
