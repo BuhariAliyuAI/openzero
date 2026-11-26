@@ -1,129 +1,199 @@
+
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>OpenZero</title>
-    <style>
-      body {
-        background-color: #0b0f1a;
-        color: #ffffff;
-        font-family: Arial, sans-serif;
-      }
-      section {
-        border: 1px solid #2a3350;
-        padding: 16px;
-        margin: 16px 0;
-        border-radius: 12px;
-      }
-      h2 {
-        color: #4da3ff;
-      }
-      .button {
-        background-color: #4da3ff;
-        color: #0b0f1a;
-        padding: 12px 24px;
-        border: none;
-        border-radius: 8px;
-        text-decoration: none;
-        display: inline-block;
-      }
-      footer {
-         color: #8a94b0;
-         font-size: 14px;
-         margin: 24px 0;
-      }
-      label {
-  display: block;
-  margin-bottom: 8px;
-}
-input {
-  width: 100%;
-  box-sizing: border-box;
-  padding: 12px;
-  margin-bottom: 16px;
-  background-color: #0b0f1a;
-  color: #ffffff;
-  border: 1px solid #2a3350;
-  border-radius: 8px;
-  font-size: 16px;
-}
- #id-card {
-  background-color: #111a33;
-  border: 1px solid #4da3ff;
-  border-radius: 12px;
-  padding: 16px;
-  margin-top: 16px;
-}
-#card-name {
-  font-size: 22px;
-  font-weight: bold;
-}
-#card-id {
-  color: #4da3ff;
-  font-family: monospace;
-  font-size: 18px;
-}
-    </style>
-  </head>
-  <body>
-    <h1>OpenZero</h1>
-    <p>Your data, in your hands.</p>
-    <a class="button" href="#openzero-id">Get Started</a>
-    <a class="button" href="https://github.com/BuhariAliyuAI/openzero">View on GitHub</a>
-    <section id="openzero-id">
-      <h2>OpenZero ID</h2>
-      <p>Prove who you are, without revealing your secrets.</p>
-    </section>
-    <section id="create-id">
-  <h2>Create your ID (prototype)</h2>
-    <form id="id-form"> 
-  <label for="full-name">Full name</label>
-    <input type="text" id="full-name" placeholder="Your name">
-    <button type="submit" class="button">Create ID</button>
-    </form>
-  <p id="result"></p>
-  <div id="id-card" hidden>
-    <p>OpenZero ID</p>
-    <p id="card-name"></p>
-    <p id="card-id"></p>
-  </div>
-  </section>
-    <section>
-      <h2>OpenZero Wallet</h2>
-      <p>Store your credentials and assets. Only you hold the key.</p>
-    </section>
-    <section>
-      <h2>OpenZero AI</h2>
-      <p>An assistant that works for you, with only the access you allow.</p>
-    </section>
-    <section>
-      <h2>How it works</h2>
-      <p>An issuer, like a school, verifies your information. You keep it in your wallet. A verifier, like a bank, checks the proof without seeing your data.</p>
-    </section>
-    <section>
-      <h2>Roadmap</h2>
-      <ol>
-        <li>OpenZero ID prototype</li>
-        <li>OpenZero Wallet</li>
-        <li>OpenZero AI</li>
-      </ol>
-    </section>
-   <footer>© 2026 OpenZero. Your data, in your hands.</footer>
-   <script>
-  const form = document.getElementById("id-form");
-  const result = document.getElementById("result");
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OpenZero</title>
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault();
-    const name = document.getElementById("full-name").value.trim();
-    const id = "OZ-" + Math.floor(Math.random() * 1000000);
-result.textContent = "Welcome, " + name + ". Your ID: " + id;
-    document.getElementById("card-name").textContent = name;
-document.getElementById("card-id").textContent = id;
-document.getElementById("id-card").hidden = false;
-    localStorage.setItem("oz-name", name);
-localStorage.setItem("oz-id", id);
-   });
+  <style>
+    body {
+      background-color: #0b0f1a;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      padding: 16px;
+    }
+
+    section {
+      border: 1px solid #2a3350;
+      padding: 16px;
+      margin: 16px 0;
+      border-radius: 12px;
+    }
+
+    h2 {
+      color: #4da3ff;
+    }
+
+    .button {
+      background-color: #4da3ff;
+      color: #0b0f1a;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 8px;
+      text-decoration: none;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    footer {
+      color: #8a94b0;
+      font-size: 14px;
+      margin: 24px 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin-bottom: 16px;
+      background-color: #0b0f1a;
+      color: #ffffff;
+      border: 1px solid #2a3350;
+      border-radius: 8px;
+      font-size: 16px;
+    }
+
+    #id-card {
+      background-color: #111a33;
+      border: 1px solid #4da3ff;
+      border-radius: 12px;
+      padding: 16px;
+      margin-top: 16px;
+    }
+
+    #card-name {
+      font-size: 22px;
+      font-weight: bold;
+    }
+
+    #card-id {
+      color: #4da3ff;
+      font-family: monospace;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>OpenZero</h1>
+  <p>Your data, in your hands.</p>
+
+  <a class="button" href="#openzero-id">Get Started</a>
+  <a class="button" href="https://github.com/BuhariAliyuAI/openzero">
+    View on GitHub
+  </a>
+
+  <section id="openzero-id">
+    <h2>OpenZero ID</h2>
+    <p>Prove who you are, without revealing your secrets.</p>
+  </section>
+
+  <section id="create-id">
+    <h2>Create your ID (prototype)</h2>
+
+    <form id="id-form">
+      <label for="full-name">Full name</label>
+
+      <input
+        type="text"
+        id="full-name"
+        placeholder="Your name"
+        required
+      >
+
+      <button type="submit" class="button">
+        Create ID
+      </button>
+    </form>
+
+    <p id="result"></p>
+
+    <div id="id-card" hidden>
+      <p>OpenZero ID</p>
+      <p id="card-name"></p>
+      <p id="card-id"></p>
+    </div>
+  </section>
+
+  <section>
+    <h2>OpenZero Wallet</h2>
+    <p>Store your credentials and assets. Only you hold the key.</p>
+  </section>
+
+  <section>
+    <h2>OpenZero AI</h2>
+    <p>An assistant that works for you, with only the access you allow.</p>
+  </section>
+
+  <section>
+    <h2>How it works</h2>
+    <p>
+      An issuer, like a school, verifies your information.
+      You keep it in your wallet. A verifier, like a bank,
+      checks the proof without seeing your data.
+    </p>
+  </section>
+
+  <section>
+    <h2>Roadmap</h2>
+    <ol>
+      <li>OpenZero ID prototype</li>
+      <li>OpenZero Wallet</li>
+      <li>OpenZero AI</li>
+    </ol>
+  </section>
+
+  <footer>
+    © 2026 OpenZero. Your data, in your hands.
+  </footer>
+
+  <script>
+    const form = document.getElementById("id-form");
+    const result = document.getElementById("result");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document
+        .getElementById("full-name")
+        .value.trim();
+
+      if (!name) {
+        result.textContent = "Please enter your name.";
+        return;
+      }
+
+      const id = "OZ-" + Math.floor(Math.random() * 1000000);
+
+      result.textContent =
+        "Welcome, " + name + ". Your ID: " + id;
+
+      document.getElementById("card-name").textContent = name;
+      document.getElementById("card-id").textContent = id;
+      document.getElementById("id-card").hidden = false;
+
+      localStorage.setItem("oz-name", name);
+      localStorage.setItem("oz-id", id);
+    });
+
+    const savedName = localStorage.getItem("oz-name");
+    const savedId = localStorage.getItem("oz-id");
+
+    if (savedName && savedId) {
+      document.getElementById("card-name").textContent = savedName;
+      document.getElementById("card-id").textContent = savedId;
+      document.getElementById("id-card").hidden = false;
+
+      result.textContent = "Welcome back, " + savedName + ".";
+    }
   </script>
-  </body>
+
+</body>
 </html>
+
