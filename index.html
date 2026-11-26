@@ -102,6 +102,9 @@ input {
     const name = document.getElementById("full-name").value.trim();
     const id = "OZ-" + Math.floor(Math.random() * 1000000);
 result.textContent = "Welcome, " + name + ". Your ID: " + id;
+    document.getElementById("card-name").textContent = name;
+document.getElementById("card-id").textContent = id;
+document.getElementById("id-card").hidden = false;
    });
   </script>
   </body>
