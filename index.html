@@ -121,6 +121,8 @@ result.textContent = "Welcome, " + name + ". Your ID: " + id;
     document.getElementById("card-name").textContent = name;
 document.getElementById("card-id").textContent = id;
 document.getElementById("id-card").hidden = false;
+    localStorage.setItem("oz-name", name);
+localStorage.setItem("oz-id", id);
    });
   </script>
   </body>
